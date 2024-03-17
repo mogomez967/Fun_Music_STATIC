@@ -7,6 +7,7 @@ if (!code) {
 } else {
     const accessToken = await getAccessToken(clientId, code);
     const profile = await fetchProfile(accessToken);
+    console.log(profile);
     populateUI(profile);
 }
 
@@ -19,7 +20,7 @@ export async function redirectToAuthCodeFlow(clientId) {
     const params = new URLSearchParams();
     params.append("client_id", clientId);
     params.append("response_type", "code");
-    params.append("redirect_uri", "http://localhost:5173/callback");
+    params.append("redirect_uri", "https://df66aedd-ceeb-4930-baa4-edaea5e0ce95-00-19x9r9itsh327.kirk.replit.dev/");
     params.append("scope", "user-read-private user-read-email");
     params.append("code_challenge_method", "S256");
     params.append("code_challenge", challenge);
@@ -74,6 +75,7 @@ async function fetchProfile(token) {
 
     return await result.json();
 }
+
 
 function populateUI(profile) {
     document.getElementById("displayName").innerText = profile.display_name;

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>songWeek</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -18,7 +19,25 @@
                 </p>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <div class="container">
+        <div class="notification is-info">
+            <h1><strong>Display your Spotify profile data</strong></h1>
+            
+            <section id="profile">
+            <h2>Logged in as <span id="displayName"></span></h2>
+            <span id="avatar"></span>
+            <ul>
+                <li>User ID: <span id="id"></span></li>
+                <li>Email: <span id="email"></span></li>
+                <li>Spotify URI: <a id="uri" href="#"></a></li>
+                <li>Link: <a id="url" href="#"></a></li>
+                <li>Profile Image: <span id="imgUrl"></span></li>
+            </ul>
+            </section>
+        </div>
+    </div>
+
     
 </body>
 

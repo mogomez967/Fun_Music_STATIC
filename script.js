@@ -20,7 +20,7 @@ export async function redirectToAuthCodeFlow(clientId) {
     const params = new URLSearchParams();
     params.append("client_id", clientId);
     params.append("response_type", "code");
-    params.append("redirect_uri", "https://df66aedd-ceeb-4930-baa4-edaea5e0ce95-00-19x9r9itsh327.kirk.replit.dev/");
+    params.append("redirect_uri", "https://df66aedd-ceeb-4930-baa4-edaea5e0ce95-00-19x9r9itsh327.kirk.replit.dev/?code=AQCizowFX3rpVoHcb8jKpsckn-M2u3mS3Rl51h721qIyBBCZ5nkdmuJ-mdG20I444xhl7YBpdtVGxijk5o9hDIJqDLxRHH3-WHqMWhFGUYURT3Z__63QJzof6Caabpv-2n1e82FgStJEZwQDViara4p1tn7b50DCVDwGqORTqhYK-W64iEXWtRtjL4kUjIVStcghKQZBFoNB5HGqpLhFkt4VeMCsEbIFN2ebotuk1RwtYL02KePvOLafjFfAPfuBG_IzJaz9FlClhfNNzfHcsF-NDownsQ-LmJT4G0EYBWfIZ5bqO2YdP4-QLtlIeoMt46mThB6AeS26jojetifrRhWehSYmDGL_AA");
     params.append("scope", "user-read-private user-read-email");
     params.append("code_challenge_method", "S256");
     params.append("code_challenge", challenge);
@@ -52,10 +52,12 @@ export async function getAccessToken(clientId, code) {
     const verifier = localStorage.getItem("verifier");
 
     const params = new URLSearchParams();
+    params.append("grant_type", "client_credentials");
     params.append("client_id", clientId);
-    params.append("grant_type", "authorization_code");
+    params.append("client_secret", "cd7ea2286af24770af4ae90524cbf3a7")
+    // params.append("grant_type", "authorization_code");
     params.append("code", code);
-    params.append("redirect_uri", "http://localhost:5173/callback");
+    params.append("redirect_uri", "https://df66aedd-ceeb-4930-baa4-edaea5e0ce95-00-19x9r9itsh327.kirk.replit.dev/?code=AQCizowFX3rpVoHcb8jKpsckn-M2u3mS3Rl51h721qIyBBCZ5nkdmuJ-mdG20I444xhl7YBpdtVGxijk5o9hDIJqDLxRHH3-WHqMWhFGUYURT3Z__63QJzof6Caabpv-2n1e82FgStJEZwQDViara4p1tn7b50DCVDwGqORTqhYK-W64iEXWtRtjL4kUjIVStcghKQZBFoNB5HGqpLhFkt4VeMCsEbIFN2ebotuk1RwtYL02KePvOLafjFfAPfuBG_IzJaz9FlClhfNNzfHcsF-NDownsQ-LmJT4G0EYBWfIZ5bqO2YdP4-QLtlIeoMt46mThB6AeS26jojetifrRhWehSYmDGL_AA");
     params.append("code_verifier", verifier);
 
     const result = await fetch("https://accounts.spotify.com/api/token", {
